@@ -1,4 +1,5 @@
-from django.http import HttpResponse
+from django.http import HttpResponse,JsonResponse
+from .models import IndividualAccount, JointAccount
 from django.shortcuts import render
 import os
 import openai
@@ -33,6 +34,43 @@ def ask_question(request):
     except Exception as e:
         return HttpResponse(f"An error occurred: {e}")
 
+def create_individual_account(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        balance = float(request.POST.get('balance'))
+        account = IndividualAccount.objects.create(username=username, balance=balance)
+        return JsonResponse({'status': 'success', 'account_id': account.id})
+    return JsonResponse({'status': 'failed'})
+
+def create_joint_account(request):
+    if request.method == 'POST':
+        username1 = request.POST.get('username1')
+        username2 = request.POST.get('username2')
+        total_balance = float(request.POST.get('balance'))
+
+        # Fetch individual accounts based on usernames
+        user1 = IndividualAccount.objects.get(username=username1)
+        user2 = IndividualAccount.objects.get(username=username2)
+
+        # Calculate individual incomes
+        income1 = user1.balance
+        income2 = user2.balance
+
+        # Calculate proportionate balance
+        total_income = income1 + income2
+        proportionate_balance1 = (income1 / total_income) * total_balance
+        proportionate_balance2 = (income2 / total_income) * total_balance
+
+        # Create joint account
+        joint_account = JointAccount.objects.create(
+            balance=total_balance,
+            proportionate_balance1=proportionate_balance1,
+            proportionate_balance2=proportionate_balance2
+        )
+
+        return JsonResponse({'status': 'success', 'account_id': joint_account.id})
+
+    return JsonResponse({'status': 'failed'})
 
 
 

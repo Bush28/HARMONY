@@ -24,8 +24,17 @@ SECRET_KEY = 'django-insecure-y#++rl#x%%)jkjg8_dxje(0*zrl&=81f@%v(q#=56djn!-t((^
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
+# CSRF_COOKIE_SECURE = False
+# SESSION_COOKIE_SECURE = False
 ALLOWED_HOSTS = []
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:3000",  
+#     "http://127.0.0.1:9000",  
+#     "http://127.0.0.1:8000"
+# ]
+CORS_ALLOW_ALL_ORIGINS = True
+
+
 
 
 # Application definition
@@ -37,8 +46,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
 
     'FinancialAdvisor',
+    'IncomeTracker',
 
 ]
 
@@ -50,6 +61,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'harmony.urls'

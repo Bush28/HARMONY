@@ -30,9 +30,12 @@ class IndividualAccount(models.Model):
     username = models.CharField(max_length=50)
     balance = models.FloatField()
 
-#for Joint Accounts
+
 class JointAccount(models.Model):
     balance = models.FloatField()
+    proportionate_balance1 = models.FloatField()
+    proportionate_balance2 = models.FloatField()
+
 
 #for Expenses
 class Expense(models.Model):

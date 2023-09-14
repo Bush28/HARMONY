@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class ChoreequalizerConfig(AppConfig):
+class UserauthConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'ChoreEqualizer'
+    name = 'UserAuth'
