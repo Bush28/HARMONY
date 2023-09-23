@@ -1,111 +1,49 @@
-// import React, { useEffect, useState } from 'react';
-
-// function App() {
-//   const [accounts, setAccounts] = useState([]);
-
-//   useEffect(() => {
-//     fetch('http://127.0.0.1:8000/get_accounts/')
-//       .then((response) => response.json())
-//       .then((data) => setAccounts(data.accounts));
-//   }, []);
-
-//   return (
-//     <div>
-//       <h1>Account Info</h1>
-//       <ul>
-//         {accounts.map((account, index) => (
-//           <li key={index}>
-//             Username: {account.username}, Balance: {account.balance}
-//             {account.spouse && `, Spouse: ${account.spouse}, Joint Balance: ${account.joint_balance}`}
-//           </li>
-//         ))}
-//       </ul>
-//     </div>
-//   );
-// }
-
-// export default App;
-
-
-
-
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Dashboard from './components/Dashboard';
+import IncomeTracker from './components/IncomeTracker';
+import JointAccount from './components/JointAccount';
+import YourAccount from './components/YourAccount';
+import FinancialAdvisor from './components/FinancialAdvisor';
 import './App.css';
-import AccountForm from './components/AccountForm.js';
-import Dashboard from './components/Dashboard.js';
 
 function App() {
   const [users, setUsers] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/get_accounts/")
-      .then(response => response.json())
-      .then(data => setUsers(data.accounts))
+    fetch('http://127.0.0.1:8000/get_accounts/')
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then((data) => setUsers(data.accounts))
+      .catch((error) => {
+        setError(error);
+      });
   }, []);
 
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Harmony</h1>
-        <h2>Account Form</h2>
-        <AccountForm users={users} setUsers={setUsers} />
-        <h2>Dashboard</h2>
-        <Dashboard users={users} />
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <header className="App-header">
+          <Routes>
+            <Route path="/incometracker" element={<IncomeTracker users={users} />} />
+            {/* <Route path="/jointaccount" element={<JointAccount users={users} />} /> */}
+            <Route path="/youraccount" element={<YourAccount users={users} />} />
+            <Route path="/ask" element={<FinancialAdvisor users={users} />} />
+            <Route path="/" element={<Dashboard users={users} />} />
+          </Routes>
+        </header>
+      </div>
+    </Router>
   );
 }
 
 export default App;
-// import React, { useState, useEffect } from 'react';
-// import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-// import Dashboard from './components/Dashboard';
-// import AccountForm from './components/AccountForm.js';
-// import IncomeTracker from './components/IncomeTracker.js';
-// import JointAccount from './components/JointAccount.js';
-// import FinancialAdvisor from './components/FinancialAdvisor.js';
-// import YourAccount from './components/YourAccount.js';
-
-
-// function App() {
-//   const [users, setUsers] = useState([]);
-
-//   useEffect(() => {
-//     fetch('http://127.0.0.1:8000/get_accounts/')
-//       .then((response) => response.json())
-//       .then((data) => setUsers(data.accounts));
-//   }, []);
-
-//   return (
-//     <Router>
-//       <div className="App">
-//         <header className="App-header">
-//           <h1>Account Form</h1>
-//           <Switch>
-//             <Route path="/incometracker">
-
-//             <IncomeTracker users={users} />
-//             </Route>
-//             <Route path="/jointaccount">
-//               <JointAccount users={users} />
-//             </Route>
-//             <Route path="/youraccount">
-//               <YourAccount users={users} />
-//             </Route>
-//             <Route path="/accountform">
-//               <AccountForm users={users} />
-//             </Route>
-//             <Route path="/financialadvisor">
-//               <FinancialAdvisor users={users} />
-//             </Route>
-//             <Route path="/">
-//               <Dashboard users={users}/>
-//             </Route>
-//           </Switch>
-//         </header>
-//       </div>
-//     </Router>
-//   );
-// }
-
-// export default App;

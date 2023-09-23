@@ -1,0 +1,39 @@
+.youraccount {
+    background-color: #090303;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.youraccount h1 {
+    color: #4CAF50;
+}
+
+.youraccount table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 18px;
+    text-align: left;
+}
+
+.youraccount th,
+.youraccount td {
+    padding: 12px 15px;
+}
+
+.youraccount th {
+    background-color: #2196F3;
+    color: rgb(21, 9, 9);
+}
+
+.youraccount tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.youraccount tr:nth-of-type(even) {
+    background-color: #1e1a3b;
+}
+
+.youraccount tr:last-of-type {
+    border-bottom: 2px solid #2196F3;
+}
