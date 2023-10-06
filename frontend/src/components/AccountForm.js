@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import './AccountForm.css';
-
-export default function AccountForm({ users, setUsers }) {
+import { useNavigate } from 'react-router-dom';
+export default function AccountForm({ currentUser, setCurrentUser}) {
+    const navigate = useNavigate();
 
 
 
@@ -13,7 +14,6 @@ export default function AccountForm({ users, setUsers }) {
 
     function post(event) {
         event.preventDefault();
-        console.log("hi bush")
 
         fetch('http://127.0.0.1:8000/create_individual_account/', {
             method: "POST",
@@ -29,7 +29,11 @@ export default function AccountForm({ users, setUsers }) {
             })
         })
             .then(response => response.json())
-            .then(data => setUsers([...users, data]))
+            .then((data) => {
+                setCurrentUser(data);
+                localStorage.setItem('currentUser', JSON.stringify(data));
+                navigate('/dashboard');
+            })
         event.target.reset();
     }
 
