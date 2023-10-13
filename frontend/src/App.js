@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Dashboard from './components/Dashboard';
 import IncomeTracker from './components/IncomeTracker';
+import JointAccount from './components/JointAccount';
 import Navbar from './components/Navbar';
 import AccountForm from './components/AccountForm'
 import YourAccount from './components/YourAccount';
@@ -38,11 +39,11 @@ function App() {
           <Navbar /> 
           <Routes>
             <Route path="/incometracker" element={<IncomeTracker users={users} />} />
-            <Route path="/AccountForm" element={<AccountForm users={users} setUsers={setUsers} />} />
-            {/* <Route path="/jointaccount" element={<JointAccount users={users} />} /> */}
+            <Route path="/" element={<AccountForm users={users} setUsers={setUsers} />} />
+            <Route path="/jointaccount" element={<JointAccount users={users} />} />
             <Route path="/youraccount" element={<YourAccount users={users} />} />
             <Route path="/ask" element={<FinancialAdvisor users={users} />} />
-            <Route path="/" element={<Dashboard users={users} />} />
+            <Route path="/dashboard" element={<Dashboard users={users} />} />
           </Routes>
         </header>
       </div>

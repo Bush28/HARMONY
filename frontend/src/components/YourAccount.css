@@ -1,39 +1,39 @@
 .youraccount {
-    background-color: #090303;
+    max-width: 800px;
+    margin: 0 auto;
     padding: 20px;
+    background-color: #544752;
     border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.youraccount h1 {
-    color: #4CAF50;
-}
-
-.youraccount table {
+table {
     width: 100%;
     border-collapse: collapse;
-    margin: 25px 0;
-    font-size: 18px;
+    margin-top: 20px;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+th,
+td {
+    padding: 10px 15px;
     text-align: left;
+    border-bottom: 1px solid #f0eded;
 }
 
-.youraccount th,
-.youraccount td {
-    padding: 12px 15px;
+th {
+    background-color: #a06abe;
 }
 
-.youraccount th {
-    background-color: #2196F3;
-    color: rgb(21, 9, 9);
+tbody tr:nth-child(even) {
+    background-color: #380d32;
 }
 
-.youraccount tr {
-    border-bottom: 1px solid #dddddd;
-}
-
-.youraccount tr:nth-of-type(even) {
-    background-color: #1e1a3b;
-}
-
-.youraccount tr:last-of-type {
-    border-bottom: 2px solid #2196F3;
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    color: #333;
 }

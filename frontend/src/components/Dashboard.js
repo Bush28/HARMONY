@@ -69,9 +69,7 @@ import './Dashboard.css';
 const Dashboard = () => {
     return (
         <div className='dashboard-container'>
-            <div className='dashboard-box'>
-                <Link to='/incometracker'>Income Tracker</Link>
-            </div>
+
             <div className='dashboard-box'>
                 <Link to='/jointaccount'>Joint Account</Link>
             </div>
@@ -80,6 +78,9 @@ const Dashboard = () => {
             </div>
             <div className='dashboard-box'>
                 <Link to='/ask'>Financial Advisor</Link>
+            </div>
+            <div className='dashboard-box'>
+                <Link to='/incometracker'>Income Tracker</Link>
             </div>
         </div>
     );
