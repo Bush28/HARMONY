@@ -51,7 +51,7 @@ export default function FinancialAdvisor() {
         e.preventDefault();
         setShowDetailsInput(false);
 
-        const concatenatedQuestion = `I want to buy a ${details.item}. My salary is ${details.salary} and I have ${details.jointAccountBalance} in my joint account. Should I buy it?`;
+        const concatenatedQuestion = `I want to buy a ${details.item}. My salary is ${details.salary} and I have to put ${details.jointAccountBalance} in my joint account. Should I buy it?`;
 
         fetch('http://127.0.0.1:8000/ask/', {
             method: 'POST',
