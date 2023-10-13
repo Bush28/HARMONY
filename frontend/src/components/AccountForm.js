@@ -6,9 +6,10 @@ export default function AccountForm({ users, setUsers }) {
 
 
     const [username, setUserName] = useState('')
-    const [balance, setBalance] = useState('');
-    const [spouse, setSpouse] = useState('');
-    const [jointBalance, setJointBalance] = useState('')
+    const [income, setIncome] = useState('');
+    const [partner, setPartner] = useState('');
+    const [partner_income, setPartner_Income] = useState('');
+    const [jointbalance, setJointBalance] = useState('')
 
 
     function post(event) {
@@ -22,10 +23,11 @@ export default function AccountForm({ users, setUsers }) {
                 "Accept": "application/json"
             },
             body: JSON.stringify({
-                "username":username,
-                "spouse" : spouse,
-                "balance": balance,
-                "jointBalance": jointBalance,
+                "username": username,
+                "income": income,
+                "partner": partner,
+                "partner_income": partner_income,
+                "jointbalance": jointbalance,
             })
         })
             .then(response => response.json())
@@ -38,8 +40,9 @@ export default function AccountForm({ users, setUsers }) {
     return (
         <form className="" onSubmit={event => post(event)} >
             <input placeholder="username" onChange={event => setUserName(event.target.value)} />
-            <input placeholder="balance" onChange={event => setBalance(event.target.value)} />
-            <input placeholder="spouse" onChange={event => setSpouse(event.target.value)} />
+            <input placeholder="income" onChange={event => setIncome(event.target.value)} />
+            <input placeholder="partner" onChange={event => setPartner(event.target.value)} />
+            <input placeholder="partner_income" onChange={event => setPartner_Income(event.target.value)} />
             <input placeholder="jointBalance" onChange={event => setJointBalance(event.target.value)} />
 
             <input type="submit" value="ADD ACCOUNT" />

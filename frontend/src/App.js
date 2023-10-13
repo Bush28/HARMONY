@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Dashboard from './components/Dashboard';
 import IncomeTracker from './components/IncomeTracker';
 // import JointAccount from './components/JointAccount';
+import AccountForm from './components/AccountForm'
 import YourAccount from './components/YourAccount';
 import FinancialAdvisor from './components/FinancialAdvisor';
 import './App.css';
@@ -36,6 +37,7 @@ function App() {
         <header className="App-header">
           <Routes>
             <Route path="/incometracker" element={<IncomeTracker users={users} />} />
+            <Route path="/AccountForm" element={<AccountForm users={users} setUsers={setUsers} />} />
             {/* <Route path="/jointaccount" element={<JointAccount users={users} />} /> */}
             <Route path="/youraccount" element={<YourAccount users={users} />} />
             <Route path="/ask" element={<FinancialAdvisor users={users} />} />
