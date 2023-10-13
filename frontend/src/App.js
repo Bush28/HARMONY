@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Dashboard from './components/Dashboard';
 import IncomeTracker from './components/IncomeTracker';
-import JointAccount from './components/JointAccount';
+// import JointAccount from './components/JointAccount';
 import YourAccount from './components/YourAccount';
 import FinancialAdvisor from './components/FinancialAdvisor';
 import './App.css';
 
 function App() {
   const [users, setUsers] = useState([]);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(null)
 
   useEffect(() => {
     fetch('http://127.0.0.1:8000/get_accounts/')
@@ -24,6 +24,7 @@ function App() {
         setError(error);
       });
   }, []);
+  console.log(users)
 
   if (error) {
     return <div>Error: {error.message}</div>;

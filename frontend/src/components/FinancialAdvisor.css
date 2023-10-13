@@ -1,43 +1,65 @@
-.financial-advisor-question {
+.financial-advisor {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 20px;
+    margin: 20px;
 }
 
-input {
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+.financial-advisor-question {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.financial-advisor-question input {
     width: 300px;
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
 }
 
-button {
-    margin-top: 10px;
+.financial-advisor-question button {
     padding: 10px 20px;
-    font-size: 16px;
-    background-color: #007bff;
-    color: white;
+    background-color: #007BFF;
+    color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 16px;
 }
 
-button:hover {
+.financial-advisor-question button:hover {
     background-color: #0056b3;
 }
 
 .answer-box {
+    text-align: center;
     margin-top: 20px;
-    width: 300px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f9f9f9;
 }
 
-.answer-box p {
-    margin: 0;
-    font-size: 16px;
+.prebuilt-questions {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.card {
+    width: 200px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.card.car {
+    background-color: #4169E1; 
+}
+
+.card.stocks {
+    background-color: #4169E1; 
+}
+
+.card.house {
+    background-color: #4169E1; 
 }

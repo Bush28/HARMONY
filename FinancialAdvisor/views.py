@@ -43,7 +43,7 @@ import openai
 @csrf_exempt
 def ask_question(request):
     try:
-        openai.api_key = "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"
+        openai.api_key = "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"
         
         if not openai.api_key:
             raise ValueError("API Key is not set")
@@ -51,10 +51,10 @@ def ask_question(request):
         if request.method == 'POST':
             data = json.loads(request.body.decode('utf-8'))
             user_question = data.get('question', '')
-
+            
             response = openai.Completion.create(
                 engine="text-davinci-002",
-                prompt=user_question,
+                prompt=f"{user_question}\nWhat financial advice would you give?",
                 max_tokens=100
             )
             
