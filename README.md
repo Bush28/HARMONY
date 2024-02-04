@@ -36,9 +36,6 @@ Set up the database:
 
 python manage.py makemigrations
 python manage.py migrate
-Run the development server:
-
-
 
 Run the development server:
 
