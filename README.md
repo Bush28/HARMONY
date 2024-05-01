@@ -5,7 +5,7 @@ HARMONY is a web application that helps couples manage their finances and chore 
 ## Features
 
 - **Financial Advisor:**
-  - Users can ask financial-related questions.
+  - Users can ask finance-related questions.
   - The application uses OpenAI's GPT-3 to provide answers.
   - User-friendly interface for asking questions and viewing responses.
 
